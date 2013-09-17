@@ -2,6 +2,37 @@
 <html>
   <head>
     <title>Signup</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $.getJSON('http://signup.pranav.io:3000/get', function(data) {
+          for(i in data) {
+            $('.container').append(generate_box(i, data[i]))
+          }
+        })
+      })
+
+      function generate_box(name, users) {
+        var input_html = '<form class="form-inline" method=POST role="form" action="http://signup.pranav.io:3000/adduser">' +
+          '<div class="form-group">' +
+          '  <div class="col-md-8"><input class="form-control" type="text" name="user" placeholder="Your name."></div>' +
+          '  <button type="submit" class="btn btn-primary">Submit</button>' +
+          '  <input type="hidden" name="project" value="' + name + '">' +
+          '</div></form>'
+
+        var users_html = ""
+        for(i = 0; i < users.length; i++)
+          users_html = users_html + '<li>' + users[i] + '</li>' + "\n"
+        return '<div class="col-md-4">' +
+               '  <h3>'+name+'</h3>'    +
+               users_html +
+               input_html +
+               '</div>'
+      }
+
+    </script>
   </head>
   <body>
     <div class="container">
