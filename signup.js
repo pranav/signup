@@ -23,6 +23,7 @@ app.post('/adduser', function(req, res) {
 
 var projects = {}
 app.get('/get', function(req, res) {
+    res.header("Access-Control-Allow-Origin", '*')
     var rows = {}
     db.each("SELECT project,user FROM project", function(err, row) {
         if(rows[row.project] == undefined) {
