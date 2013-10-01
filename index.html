@@ -6,58 +6,313 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script>
-      $(document).ready(function() {
-        $.getJSON('http://signup.pranav.io:3000/get', function(data) {
-          for(i in data) {
-            $('.container').append(generate_box(i, data[i]))
-          }
-        })
-      })
-
-      function generate_box(name, users) {
-        var input_html = '<form class="form-inline" method=POST role="form" action="http://signup.pranav.io:3000/adduser">' +
-          '<div class="form-group">' +
-          '  <div class="col-md-8"><input class="form-control" type="text" name="user" placeholder="Your name."></div>' +
-          '  <button type="submit" class="btn btn-primary">Submit</button>' +
-          '  <input type="hidden" name="project" value="' + name + '">' +
-          '</div></form>'
-
-        var users_html = ""
-        for(i = 0; i < users.length; i++)
-          users_html = users_html + '<li>' + users[i] + '</li>' + "\n"
-        return '<div class="col-md-4">' +
-               '  <h3>'+name+'</h3>'    +
-               users_html +
-               input_html +
-               '</div>'
-      }
-
     </script>
     <style>
-      .col-md-4, .col-lg-12 { margin-bottom:100px }
+      .box  {
+        min-height: 200px;
+        text-align: center;
+        border-bottom: 1px #ccc solid;
+        padding: 50px;
+      }
+
+      .box p, .box li{
+        text-align: left;
+        font-size: 18px;
+      }
+
+      h1 {
+        display: inline;
+      }
+
+      .box:nth-child(even) {
+        background: #eee;
+      }
+
+      ul.text-center li {
+        text-align: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
     </style>
   </head>
   <body>
-    <div class="container">
-      <div class="col-lg-12">
-        <h1 class="text-center">Crew Project Signup.</h1>
-        <h4 class="text-center">Questions? Contact Pranav, hyfi (at) ccs.neu.edu</h4>
+    <div class="box">
+      <div class="container">
+        <h1>Crew Project Signup</h1>
+        <h4>If you have any questions, contact Pranav Gandhi. hyfi@ccs.neu.edu</h4>
+        <div class="col-lg-12">
+          <h3>Projects</h3>
+          <ul class="text-center">
+            <li><a href="#github">Github API Hacks</a></li>
+            <li><a href="#cloud">Cloud</a></li>
+            <li><a href="#dds">Digital Display System</a></li>
+            <li><a href="#pitcam">Flying Pitcam</a></li>
+            <li><a href="#racktables">Racktables</a></li>
+            <li><a href="#cgibox">CCIS Hosted Applications (CGI BOX)</a></li>
+            <li><a href="#packetfence">CCIS Wireless Security / Packetfence.</a></li>
+            <li><a href="#nagios">Network Monitoring (Nagios / Sensu).</a></li>
+            <li><a href="#ipv6">IPv6.</a></li>
+
+          </ul>
+
+        </div>
+
       </div>
-      <div class="col-lg-4">
-        <h3>Add new project</h3>
-        <form method=POST role="form" action="http://signup.pranav.io:3000/adduser">
+    </div>
+
+    <div class="box">
+      <div class="container">
+        <div class="col-lg-12">
+          <h1><a id="github"></a>Github API Hacks.</h1>
+        </div>
+        <div class="col-md-4">
+          <h3>Description</h3>
+          <p>We are getting Github Enterprise for the College so let's do something cool. What if you could submit homework by pushing to Github? What if Github could automatically grade your homework for you and give you reports? What if professors could create teams by hitting an API we write?</p>
+        </div>
+        <div class="col-md-4">
+          <h3>Things you will learn.</h3>
+          <ul>
+            <li><a href="http://git-scm.com">Git</a> / Version Control</li>
+            <li>Working with professors</li>
+            <li>Whatever web language you want to build this.</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Signup</h3>
           <div class="form-group">
-            <div class="col-md-9">
-              <input class="form-control" type="text" name="project" placeholder="Project Name">
-            </div>
+            <input type='text' placeholder='Your Name.'>
+            <button>Signup</button>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="container">
+        <div class="col-lg-12">
+          <h1><a id="dds"></a>Digital Display System</h1>
+        </div>
+        <div class="col-md-4">
+          <h3>Description</h3>
+          <p>It would be really cool if we could control all the TV screens around campus. Think of all the funny things we could do. It would be a lot better than running a PowerPoint presentation which is super lame.</p>
+        </div>
+        <div class="col-md-4">
+          <h3>Things you will learn.</h3>
+          <ul>
+            <li><a href="http://git-scm.com">Git</a> / Version Control</li>
+            <li>PostgreSQL (database)</li>
+            <li>Ruby/PHP/Python/Whatever language to build the frontend.</li>
+            <li>Linux Administration to control it.</li>
+            <li>Puppet to handle config management of clients.</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Signup</h3>
           <div class="form-group">
-            <div class="col-md-9">
-              <input class="form-control" type="text" name="user" placeholder="Your name.">
-            </div>
+            <input type='text' placeholder='Your Name.'>
+            <button>Signup</button>
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        </div>
+      </div>
+    </div>    
+
+    <div class="box">
+      <div class="container">
+        <div class="col-lg-12">
+          <h1><a id="cloud"></a>Cloud.</h1>
+        </div>
+        <div class="col-md-4">
+          <h3>Description</h3>
+          <p>Wouldn't it be cool if CCIS could spin up a lot of virtual machines really fast? What if every student gets their own number of virtual machines on the CCIS network (We have gigabit ethernet!). What if a class needs 40 virtual machines immediately? Let's fix that problem.</p>
+        </div>
+        <div class="col-md-4">
+          <h3>Things you will learn.</h3>
+          <ul>
+            <li>Linux Containers / <a href="https://www.docker.io/">Docker</a></li>
+            <li><a href="http://aws.amazon.com">Amazon EC2</a> and APIs</li>
+            <li><a href="http://www.openstack.org/">Openstack</a></li>
+            <li>VMWare APIs</li>
+            <li>Your choice of scripting language.</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Signup</h3>
+          <div class="form-group">
+            <input type='text' placeholder='Your Name.'>
+            <button>Signup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="box">
+      <div class="container">
+        <div class="col-lg-12">
+          <h1><a id="racktables"></a>Racktables</h1>
+        </div>
+        <div class="col-md-4">
+          <h3>Description</h3>
+          <p>When you have over a hundred servers in a datacenter, its hard to keep track of where they all are and information about them. There aren't any good tools that do this, so why don't we create and opensource our own?</p>
+        </div>
+        <div class="col-md-4">
+          <h3>Things you will learn.</h3>
+          <ul>
+            <li>Ruby/Python/PHP/Node/Whatever web language</li>
+            <li>PostgreSQL database</li>
+            <li>How to build visually pleasing frontends.</li>
+            <li>Linux Administration to control it.</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Signup</h3>
+          <div class="form-group">
+            <input type='text' placeholder='Your Name.'>
+            <button>Signup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="container">
+        <div class="col-lg-12">
+          <h1><a id="pitcam"></a>Flying Pitcam</h1>
+        </div>
+        <div class="col-md-4">
+          <h3>Description</h3>
+          <p><a href="http://pitcam.ccs.neu.edu">The Pitcam</a> already exists but what if we gave it wings?</p>
+        </div>
+        <div class="col-md-4">
+          <h3>Things you will learn.</h3>
+          <ul>
+            <li>Embedded Systems?</li>
+            <li>How to give a camera wings</li>
+            <li>How to stream that image to the internet.</li>
+            <li>Linux Administration to control it.</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Signup</h3>
+          <div class="form-group">
+            <input type='text' placeholder='Your Name.'>
+            <button>Signup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="container">
+        <div class="col-lg-12">
+          <h1><a id="cgibox"></a>CCIS Hosted Applications (CGI-BOX).</h1>
+        </div>
+        <div class="col-md-4">
+          <h3>Description</h3>
+          <p>If you haven't noticed yet, students get their own webpages hosted by CCIS but you can't run any Python/Ruby/PHP/Node yet. We should fix that and let you host whatever you want on a secured environment so no one else can mess with your apps.</p>
+        </div>
+        <div class="col-md-4">
+          <h3>Things you will learn.</h3>
+          <ul>
+            <li>Linux administration.</li>
+            <li>How to deploy applications.</li>
+            <li>How to create secured environments.</li>
+            <li>Any languages / databases.</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Signup</h3>
+          <div class="form-group">
+            <input type='text' placeholder='Your Name.'>
+            <button>Signup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="container">
+        <div class="col-lg-12">
+          <h1><a id="packetfence"></a>CCIS Wireless Security / Packetfence.</h1>
+        </div>
+        <div class="col-md-4">
+          <h3>Description</h3>
+          <p>You know, there is a reason why its difficult to login to the CCIS-Wireless network. It's because it needs to be secure. If you're interested in Network Security, Packetfence is a tool you should know about. It let's you authorize machines onto your networks and put them in their place.</p>
+        </div>
+        <div class="col-md-4">
+          <h3>Things you will learn.</h3>
+          <ul>
+            <li>Networking</li>
+            <li><a href="http://www.packetfence.org/">Packetfence</a>.</li>
+            <li>How to create secured networks.</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Signup</h3>
+          <div class="form-group">
+            <input type='text' placeholder='Your Name.'>
+            <button>Signup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="container">
+        <div class="col-lg-12">
+          <h1><a id="nagios"></a>Network Monitoring (Nagios / Sensu).</h1>
+        </div>
+        <div class="col-md-4">
+          <h3>Description</h3>
+          <p>You'll be assisting <a href="http://standalone-sysadmin.com">Matt Simmons</a> (CCIS's network / virtualization sysadmin) with setting up Nagios, a network monitoring tool. When you manage 100 Linux machines on your network, you need to know when any of them are having issues. This is the tool that let's you know.</p>
+        </div>
+        <div class="col-md-4">
+          <h3>Things you will learn.</h3>
+          <ul>
+            <li><a href="http://www.nagios.org/">Nagios</a></li>
+            <li><a href="http://www.sonian.com/about/sensu/">Sensu</a></li>
+            <li>Linux Administration</li>
+            <li>What to look for when Linux is having troubles.</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Signup</h3>
+          <div class="form-group">
+            <input type='text' placeholder='Your Name.'>
+            <button>Signup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="box">
+      <div class="container">
+        <div class="col-lg-12">
+          <h1><a id="ipv6"></a>IPv6</h1>
+        </div>
+        <div class="col-md-4">
+          <h3>Description</h3>
+          <p>Guess what, we're out of IPv4 addresses. Let's figure out how to convert our infrastructure to IPv6 so that we aren't in the dark ages anymore.</p>
+        </div>
+        <div class="col-md-4">
+          <h3>Things you will learn.</h3>
+          <ul>
+            <li>How the internet actually works.</li>
+            <li>Linux Administration</li>
+            <li>Networking</li>
+            <li>Layer 3 of the the internet.</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Signup</h3>
+          <div class="form-group">
+            <input type='text' placeholder='Your Name.'>
+            <button>Signup</button>
+          </div>
+        </div>
       </div>
     </div>
   </body>
