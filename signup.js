@@ -14,7 +14,7 @@ app.post('/adduser', function(req, res) {
     user    = req.body.user
     console.log('Added user '+user+' to project '+ project +'.')
     re = /^[0-9a-zA-Z -]+$/
-    if(project != undefined && user != undefined && project.length > 3 && user.length > 3 && project.match(re) && user.match(re)) {
+    if(project != undefined && user != undefined && project.length > 2 && user.length > 3 && project.match(re) && user.match(re)) {
         db.run("INSERT INTO project VALUES('" + project + "', '" + user + "');")
         res.send({return: 0})
     } else {
