@@ -37,21 +37,37 @@
     </style>
     <script>
       $(document).ready(function(){
+
+        // Get the members of projects and place them in the .box
+        $.ajax('/get', {
+          dataType: 'json'
+        }).success(function(projectusers){
+          for(project in projectusers) {
+            $('input[value="'+project+'"]').parent().parent().append('<div id="'+project+'-members"><h3>Current Members</h3></div>')
+            $('#'+project+'-members').append(projectusers[project].join(', '))
+          }
+        });
+
+        $('input[type="hidden"]').parent().append('')
+
         $('.btn').click(function(e){
           e.preventDefault()
           var project = $(this).parent().find('input[name="project"]').val()
           var user = $(this).parent().find('input[name="Name"]').val()
+          var that = this
 
-          $.post('http://signup.pranav.io:3000/adduser', {
+          if(user.length < 4) {
+            alert("That is not a valid name")
+            return
+          }
+
+          $.post('http://signup.pranav.io/adduser', {
             project: project,
             user: user
           }, function(e){
-            if(e.return = 0)
-              $(this).parent().html('<h4 class="text-center">All done!</h4>');
-            else
-              console.log("FAIL")
+            $(that).parent().html('<h4 class="text-center">All done!</h4>');
           })
-          
+
         })
 
       })
