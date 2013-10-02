@@ -15,9 +15,9 @@ app.post('/adduser', function(req, res) {
     re = /^[0-9a-zA-Z -]+$/
     if(project != undefined && user != undefined && project.length > 3 && user.length > 3 && project.match(re) && user.match(re)) {
         db.run("INSERT INTO project VALUES('" + project + "', '" + user + "');")
-        res.redirect('http://signup.pranav.io/?success')
+        res.send({return: 0})
     } else {
-        res.redirect('http://signup.pranav.io?goof')
+        res.send({return: 1})
     }
     res.end("")
 })
