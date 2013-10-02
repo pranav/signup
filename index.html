@@ -35,6 +35,27 @@
       }
 
     </style>
+    <script>
+      $(document).ready(function(){
+        $('.btn').click(function(e){
+          e.preventDefault()
+          var project = $(this).parent().find('input[name="project"]').val()
+          var user = $(this).parent().find('input[name="Name"]').val()
+
+          $.post('http://signup.pranav.io:3000/adduser', {
+            project: project,
+            user: user
+          }, function(e){
+            if(e.return = 0)
+              $(this).parent().html('<h4 class="text-center">All done!</h4>');
+            else
+              console.log("FAIL")
+          })
+          
+        })
+
+      })
+    </script>
   </head>
   <body>
     <div class="box">
